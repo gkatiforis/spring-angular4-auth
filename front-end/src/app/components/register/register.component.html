@@ -1,0 +1,38 @@
+
+<div class="container">
+
+  <h2>Register</h2>
+    <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+      <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
+      <span id="reauth-email" class="reauth-email"></span>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firstname.valid }">
+        <label for="firstname">Firstname</label>
+        <input type="text" class="form-control" name="firstname" id="firstname" [(ngModel)]="user.firstname" #firstname="ngModel" required />
+        <div *ngIf="f.submitted && !firstname.valid" class="help-block">Firstname is required</div>
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lastname.valid }">
+        <label for="lastname">Lastname</label>
+        <input type="text" class="form-control" name="lastname" id="lastname" [(ngModel)]="user.lastname" #lastname="ngModel" required />
+        <div *ngIf="f.submitted && !lastname.valid" class="help-block">Lastname is required</div>
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" name="email" id="email" pattern="[^ @]*@[^ @]*" [(ngModel)]="user.email" #email="ngModel" required />
+        <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !phone.valid }">
+        <label for="lastname">Phone</label>
+        <input type="text" class="form-control" name="phone" id="phone" [(ngModel)]="user.phone" #phone="ngModel" required minlength="8" maxlength="8"/>
+        <div *ngIf="f.submitted && !phone.valid" class="help-block">Phone is required</div>
+      </div>
+
+      <button class="btn btn-default" type="submit">Register</button>
+      <a [routerLink]="['/login']" class="btn btn-link">or login</a>
+    </form><!-- /form -->
+
+</div><!-- /container -->
+
+
+
+
+

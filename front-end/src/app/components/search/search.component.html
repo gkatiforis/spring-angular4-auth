@@ -1,0 +1,42 @@
+
+<div class="container">
+
+    <h4> {{currentUser.firstname}} {{ currentUser.lastname}}and your id is  <span class="idLabel">{{currentUser.id}}</span>   <a href="#"><span (click)="logOut()"></span> LogOut</a></h4>
+    <div class="row">
+
+
+      <div class="form-group">
+        <label for="id"> Search</label>
+        <input type="text" class="form-control" id="id" name="id" placeholder="Enter user id" [(ngModel)]="user.id" #id="ngModel"/>
+        <div *ngIf="!id.valid">id is required</div>
+      </div>
+      <button type="button" (click)="findUser()" class="btn btn-default">Find user</button>
+
+      <div class="notFoundLabel"[hidden]="user.id!=''">User not found</div>
+
+      <table class="table" [hidden]="user.email==''">
+        <tr>
+          <td>Id: </td> <td>{{user.id}}</td>
+        </tr>
+        <tr>
+          <td>Firstname: </td> <td>{{user.firstname}}</td>
+        </tr>
+        <tr>
+          <td>Lastname: </td> <td>{{user.lastname}}</td>
+        </tr>
+        <tr>
+          <td>Phone: </td> <td>{{user.phone}}</td>
+        </tr>
+        <tr>
+          <td>Email: </td> <td>{{user.email}}</td>
+        </tr>
+      </table>
+
+    </div>
+
+</div>
+
+
+
+
+
